@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+ <link rel ="stylesheet" href="file.css">
+</head>
+<body>
+ <h1> Blackjack </h1>
+ <p id="message-el" >Want to play a round?</p>
+
+ <section id="rules" aria-labelledby="rules-heading">
+	<h2 id="rules-heading">Blackjack Rules (simple)</h2>
+	<ul>
+		<li>Each round you start with 2 random cards.</li>
+		<li>Number cards are worth their number. Face cards (J/Q/K) are worth 10. Ace counts as 11.</li>
+		<li>Click "NEW CARD" to draw one more card (you can draw up to one extra card — 3 cards total).</li>
+		<li>If your sum is exactly 21 you get Blackjack and win.</li>
+		<li>If your sum goes over 21 you are out of the game (bust).</li>
+	</ul>
+ </section>
+
+ <p id="cards-el">Cards</p>
+ <p id="sum-el">Sum:</p>
+ <script  src="game.js"></script>
+ <div class="controls">
+  <button id="start-btn" onclick="startgame()">START GAME</button>
+  <button id="newcard-btn" onclick="newCard()">NEW CARD</button>
+ </div>
+</body>
+</html>
