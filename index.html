@@ -1,32 +1,127 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Document</title>
- <link rel ="stylesheet" href="file.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Vegas Blackjack | Classic Casino 21</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="file.css">
 </head>
 <body>
- <h1> Blackjack </h1>
- <p id="message-el" >Want to play a round?</p>
+  <div class="casino-table">
+    <!-- Header with Branding & Bankroll Stats -->
+    <header class="table-header">
+      <div class="brand">
+        <span class="crown-icon">👑</span>
+        <div>
+          <h1>ROYAL VEGAS</h1>
+          <span class="sub-title">BLACKJACK PAYS 3 TO 2 • DEALER STANDS ON 17</span>
+        </div>
+      </div>
+      <div class="stats-bar">
+        <div class="stat-pill">
+          <span class="stat-label">CHIPS</span>
+          <span id="bankroll-el" class="stat-value gold">$1,000</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-label">CURRENT BET</span>
+          <span id="current-bet-el" class="stat-value yellow">$0</span>
+        </div>
+        <div class="stat-pill hide-sm">
+          <span class="stat-label">STREAK</span>
+          <span id="streak-el" class="stat-value">🔥 0</span>
+        </div>
+        <button id="sound-toggle-btn" class="icon-btn" title="Toggle Sound">🔊</button>
+      </div>
+    </header>
 
- <section id="rules" aria-labelledby="rules-heading">
-	<h2 id="rules-heading">Blackjack Rules (simple)</h2>
-	<ul>
-		<li>Each round you start with 2 random cards.</li>
-		<li>Number cards are worth their number. Face cards (J/Q/K) are worth 10. Ace counts as 11.</li>
-		<li>Click "NEW CARD" to draw one more card (you can draw up to one extra card — 3 cards total).</li>
-		<li>If your sum is exactly 21 you get Blackjack and win.</li>
-		<li>If your sum goes over 21 you are out of the game (bust).</li>
-	</ul>
- </section>
+    <!-- Game Table Area -->
+    <main class="table-felt">
+      <!-- Dealer Area -->
+      <section class="hand-section dealer-section">
+        <div class="hand-header">
+          <span class="hand-title">DEALER</span>
+          <span id="dealer-score-el" class="score-badge">--</span>
+        </div>
+        <div id="dealer-cards-el" class="cards-container">
+          <div class="card card-placeholder"><span>DEALER HAND</span></div>
+        </div>
+      </section>
 
- <p id="cards-el">Cards</p>
- <p id="sum-el">Sum:</p>
- <script  src="game.js"></script>
- <div class="controls">
-  <button id="start-btn" onclick="startgame()">START GAME</button>
-  <button id="newcard-btn" onclick="newCard()">NEW CARD</button>
- </div>
+      <!-- Center Status & Table Felt Logo -->
+      <div class="table-center">
+        <div id="banner-message" class="banner-message ready">PLACE YOUR BET TO DEAL</div>
+        <div class="felt-rules-text">INSURANCE PAYS 2 TO 1</div>
+      </div>
+
+      <!-- Player Area -->
+      <section class="hand-section player-section">
+        <div class="hand-header">
+          <span class="hand-title">PLAYER</span>
+          <span id="player-score-el" class="score-badge">--</span>
+        </div>
+        <div id="player-cards-el" class="cards-container">
+          <div class="card card-placeholder"><span>PLAYER HAND</span></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Control Dock -->
+    <footer class="controls-dock">
+      <!-- Betting Phase Controls -->
+      <div id="betting-controls" class="control-panel">
+        <div class="chips-container">
+          <button class="chip chip-10" onclick="addBet(10)">
+            <span class="chip-inner">10</span>
+          </button>
+          <button class="chip chip-25" onclick="addBet(25)">
+            <span class="chip-inner">25</span>
+          </button>
+          <button class="chip chip-50" onclick="addBet(50)">
+            <span class="chip-inner">50</span>
+          </button>
+          <button class="chip chip-100" onclick="addBet(100)">
+            <span class="chip-inner">100</span>
+          </button>
+          <button class="chip chip-500" onclick="addBet(500)">
+            <span class="chip-inner">500</span>
+          </button>
+        </div>
+
+        <div class="action-buttons">
+          <button id="clear-bet-btn" class="btn btn-secondary" onclick="clearBet()">CLEAR</button>
+          <button id="deal-btn" class="btn btn-primary" onclick="dealHand()">DEAL HAND</button>
+          <button id="all-in-btn" class="btn btn-secondary" onclick="allIn()">ALL IN</button>
+        </div>
+      </div>
+
+      <!-- Playing Phase Controls -->
+      <div id="playing-controls" class="control-panel hidden">
+        <div class="action-buttons play-actions">
+          <button id="hit-btn" class="btn btn-action btn-hit" onclick="hit()">
+            <span class="btn-icon">⚡</span> HIT
+          </button>
+          <button id="stand-btn" class="btn btn-action btn-stand" onclick="stand()">
+            <span class="btn-icon">✋</span> STAND
+          </button>
+          <button id="double-btn" class="btn btn-action btn-double" onclick="doubleDown()">
+            <span class="btn-icon">✖2</span> DOUBLE
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Reset / Next Round Phase Controls -->
+      <div id="round-over-controls" class="control-panel hidden">
+        <div class="action-buttons">
+          <button id="rebet-btn" class="btn btn-secondary" onclick="rebetAndDeal()">SAME BET & DEAL</button>
+          <button id="new-round-btn" class="btn btn-primary" onclick="newRound()">NEW BET</button>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="game.js"></script>
 </body>
 </html>

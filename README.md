@@ -1,64 +1,78 @@
-﻿# 🃏 Classic Blackjack Web Game
+﻿# 🃏 Royal Vegas Blackjack — Classic Casino 21
 
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-An interactive, responsive browser-based **Blackjack (21)** card game built with vanilla HTML5, CSS3, and modern JavaScript. Features classic casino green-felt table visuals, intuitive controls, real-time score summation, and win/bust state evaluation.
+A premier, authentic **Las Vegas Casino Blackjack (21)** web game built with vanilla HTML5, CSS3, and modern JavaScript. Features full casino rules (Player vs. Dealer), 3D interactive betting chips, real-time Web Audio API sound synthesis, and smooth card dealing animations.
 
 ---
 
-## 🎮 Game Demo & Gameplay
+## ✨ Features & Enhancements
 
-- **Goal**: Reach a card total as close to **21** as possible without exceeding it.
-- **Hit 21**: You hit **Blackjack** and win!
-- **Over 21**: You **bust** and are out of the round.
-
-### 📜 Game Rules
-1. Each round starts by drawing **two random cards**.
-2. **Card Values**:
-   - Number cards (`2` through `10`): Face value.
-   - Face cards (`J`, `Q`, `K`): Count as `10`.
-   - Ace (`A`): Counts as `11`.
-3. Press **"NEW CARD"** to draw another card if you have not busted or hit Blackjack.
-4. Press **"START GAME"** anytime to reset and start a fresh hand.
-
----
-
-## 🛠️ Built With
-
-- **HTML5**: Semantic game markup and accessible rule headings.
-- **CSS3**: Custom casino table green-felt texture backdrop, button animations, and mobile-friendly typography.
-- **JavaScript (ES6+)**: Pure functional game state engine managing card draws, score summation, and reactive DOM updates.
-
----
-
-## 🚀 How to Run Locally
-
-No dependencies or build tools required!
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/Sanyam961/Blackjack-game.git
-   cd Blackjack-game
-   ```
-
-2. **Open the game**:
-   - Simply double-click `index.html` in any browser, or
-   - Serve using VS Code Live Server / `npx serve .`
+- **♠️ True Casino Rules (Player vs. Dealer)**:
+  - 52-card standard deck shuffled with the Fisher-Yates algorithm.
+  - Dealer receives 1 upcard and 1 hidden hole card, drawing to 16 and standing on all 17s.
+  - **Natural Blackjack** pays 3 to 2!
+  - Dynamic **Ace Valuation** (automatically calculates as 11 or 1 to prevent busts).
+- **⚡ Core Casino Player Actions**:
+  - **HIT**: Draw an extra card.
+  - **STAND**: Lock your total and trigger the Dealer's turn.
+  - **DOUBLE DOWN**: Double your wager for exactly one additional card.
+- **💰 Interactive 3D Chip Betting & Bankroll Engine**:
+  - Casino chips ($10, $25, $50, $100, $500) with realistic hover elevation and click sounds.
+  - Persistent bankroll saved in browser `localStorage`.
+  - Automatic $500 complimentary reload if you run out of chips!
+  - **"SAME BET & DEAL"** quick replay button for rapid rounds.
+- **🔊 Zero-Asset Web Audio Synthesizer**:
+  - Procedural sound effects synthesized via the browser's native Web Audio API (chip clinking, card dealing swishes, win fanfares, bust drops).
+  - Quick mute/unmute toggle in the header.
+- **🔥 Win Streak & Stats Tracking**: Live win streak counter and current bet indicators.
+- **📱 Fully Responsive Mobile & Desktop Layout**: Glassmorphic dark velvet felt table aesthetic styled for both mobile phones and wide desktop monitors.
 
 ---
 
-## 📂 Project Structure
+## 🎮 How to Play
+
+1. **Place Your Bet**: Click on any casino chip ($10, $25, $50, $100, $500) or press **ALL IN**.
+2. **Deal the Hand**: Click **DEAL HAND**.
+3. **Make Your Move**:
+   - Press **HIT** to draw another card.
+   - Press **STAND** if you are satisfied with your score.
+   - Press **DOUBLE** to double your bet and take one final card.
+4. **Win Conditions**:
+   - Beat the dealer's score without exceeding 21.
+   - If the dealer exceeds 21, the dealer busts and you win!
+   - Equal scores result in a **PUSH** (your bet is returned).
+
+---
+
+## 🚀 Running Locally
+
+Zero build steps or third-party dependencies required!
+
+```bash
+# Clone the repository
+git clone https://github.com/Sanyam961/Blackjack-game.git
+cd Blackjack-game
+
+# Simply open index.html in your browser or run a lightweight local server:
+python -m http.server 8080
+```
+Open [http://localhost:8080](http://localhost:8080) to play.
+
+---
+
+## 📁 Repository Structure
 
 ```
 Blackjack-game/
-├── index.html       # Primary game structure and layout
-├── file.css         # Casino green-felt styling and button effects
-├── game.js          # Core Blackjack logic and state management
-├── table.png        # Authentic casino table texture
-└── README.md        # Documentation
+├── index.html       # Casino table layout, chip dock, and scoreboards
+├── file.css         # Casino green-felt styling, 3D chips, and card animations
+├── game.js          # Blackjack deck engine, dealer AI, audio synth, and state
+├── table.png        # Casino background texture
+└── README.md        # Game guide and documentation
 ```
 
 ---
